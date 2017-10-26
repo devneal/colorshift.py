@@ -2,7 +2,7 @@
 Automatically apply colorscheme to one or all urxvt instances
 
 # Dependencies
-* urxvt
+* [urxvt](https://github.com/exg/rxvt-unicode)
 * [urxvt-config-reload](https://github.com/regnarg/urxvt-config-reload)
 * Xresources colorschemes (I use [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes))
 
