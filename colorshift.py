@@ -4,14 +4,17 @@ import os
 import signal
 import sys
 
+DEFAULT_XRESOURCES = os.path.expanduser('~/.Xresources')
+
 parser = argparse.ArgumentParser()
 parser.add_argument("colorscheme", help="the .Xresources colorscheme to use")
 parser.add_argument("-a", "--all",
                     help="change colors on all urvxt instances",
                     action="store_true")
+parser.add_argument("-x", "--xresources",
+                    help="path to the .Xresources file",
+                    default=DEFAULT_XRESOURCES)
 args = parser.parse_args()
-
-XRESOURCES = '/home/devneal/.Xresources'
 
 def get_process_name(pid):
     return os.popen("ps -o comm= -p {}".format(pid)).read().strip()
@@ -37,16 +40,15 @@ else:
     exit(1)
 
 # overwrite .Xresources file
-with open(XRESOURCES, 'r') as fin:
+with open(args.xresources, 'r') as fin:
     fin.readline() # ignore old colorscheme
-    for line in fin:
-        new_file_contents += line
+    new_file_contents += fin.read()
 
-with open(XRESOURCES, 'w') as fout:
+with open(args.xresources, 'w') as fout:
     fout.write(new_file_contents);
 
-os.system('xrdb ' + XRESOURCES)
-
+# update urxvt
+os.system('xrdb ' + args.xresources)
 if args.all:
     urxvt_pids = map(int, os.popen("pidof urxvt").read().split())
     for pid in urxvt_pids:
