@@ -32,14 +32,13 @@ else:
 colorscheme_path = os.path.realpath(colorscheme_path)
 
 # verify that the colorscheme exists
-new_file_contents = ""
-if os.path.isfile(colorscheme_path):
-    new_file_contents = '#include ' + '\"' + colorscheme_path + '\"\n'
-else:
+if !os.path.isfile(colorscheme_path):
     print "Could not find colorscheme {}".format(colorscheme_path)
     exit(1)
 
 # overwrite .Xresources file
+new_file_contents = '#include ' + '\"' + colorscheme_path + '\"\n'
+
 with open(args.xresources, 'r') as fin:
     fin.readline() # ignore old colorscheme
     new_file_contents += fin.read()
