@@ -4,7 +4,7 @@ Automatically apply colorscheme to one or all urxvt instances
 # Dependencies
 * urxvt
 * [urxvt-config-reload](https://github.com/regnarg/urxvt-config-reload)
-* Xresources colorschemes I use [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+* Xresources colorschemes (I use [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes))
 
 # Setup
 `colorshift.py` will overwrite the first line of `.Xresources` with a line of the form `#include "<path_to_colorscheme>"`. You must verify that this won't break your `.Xresources` before running the script. If no `.Xresources` file is specified, `~/.Xresources` will be used by default.
