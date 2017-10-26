@@ -32,7 +32,7 @@ else:
 colorscheme_path = os.path.realpath(colorscheme_path)
 
 # verify that the colorscheme exists
-if !os.path.isfile(colorscheme_path):
+if not os.path.isfile(colorscheme_path):
     print "Could not find colorscheme {}".format(colorscheme_path)
     exit(1)
 
