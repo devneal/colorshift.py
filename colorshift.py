@@ -28,7 +28,8 @@ if os.path.isabs(args.colorscheme):
 elif args.colorscheme.startswith('~'):
     colorscheme_path = os.path.expanduser(args.colorscheme)
 else:
-    colorscheme_path = os.getcwd() + os.sep + args.colorscheme
+    colorscheme_path = os.path.abspath(args.colorscheme)
+# simplify directory traversal (i.e. ../../..)
 colorscheme_path = os.path.realpath(colorscheme_path)
 
 # verify that the colorscheme exists
